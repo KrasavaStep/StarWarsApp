@@ -1,5 +1,6 @@
 package com.example.data.repositories
 
+import android.util.Log
 import com.example.data.data.database.StarWarsDao
 import com.example.data.data.database.mappers.mapToCharacterEntity
 import com.example.data.data.database.mappers.mapToFilmEntity
@@ -33,15 +34,33 @@ class NetworkRepositoryImpl(
      * then its result converting to NetworkResponse
      * */
 
-    override suspend fun getAllDataFromNetwork(): NetworkResponse<Boolean> {
+    override suspend fun fetchDataFromNetwork(): NetworkResponse<Boolean> {
         return coroutineScope {
             runCatching {
-                val characters = async { fetchAllPages { api.getAllCharacters() } }.await()
-                val films = async { fetchAllPages { api.getAllFilms() } }.await()
-                val species = async { fetchAllPages { api.getAllSpecies() } }.await()
-                val starships = async { fetchAllPages { api.getAllStarships() } }.await()
-                val vehicles = async { fetchAllPages { api.getAllVehicles() } }.await()
-                val planets = async { fetchAllPages { api.getAllPlanets() } }.await()
+                val characters = async { fetchAllPages(
+                    firstRequest = { api.getAllCharacters() },
+                    nextRequest =  { url -> api.getCharactersByUrl(url) })
+                }.await()
+                val films = async { fetchAllPages(
+                    firstRequest = { api.getAllFilms() },
+                    nextRequest =  { url -> api.getFilmsByUrl(url) })
+                }.await()
+                val species = async { fetchAllPages(
+                    firstRequest = { api.getAllSpecies() },
+                    nextRequest =  { url -> api.getSpeciesByUrl(url) })
+                }.await()
+                val starships = async { fetchAllPages(
+                    firstRequest = { api.getAllStarships() },
+                    nextRequest =  { url -> api.getStarshipsByUrl(url) })
+                }.await()
+                val vehicles = async { fetchAllPages(
+                    firstRequest = { api.getAllVehicles() },
+                    nextRequest =  { url -> api.getVehiclesByUrl(url) })
+                }.await()
+                val planets = async { fetchAllPages(
+                    firstRequest = { api.getAllPlanets() },
+                    nextRequest =  { url -> api.getPlanetsByUrl(url) })
+                }.await()
 
                 val combine = CombinedData(
                     characters = characters.map { it.mapToCharacters() },
@@ -67,7 +86,8 @@ class NetworkRepositoryImpl(
      * for request and throws exception if something went wrong.
      * */
     private suspend fun <T> fetchAllPages(
-        firstRequest: suspend () -> Response<PagedResponse<T>>
+        firstRequest: suspend () -> Response<PagedResponse<T>>,
+        nextRequest: suspend (String) -> Response<PagedResponse<T>>
     ): List<T> {
         val allResults = mutableListOf<T>()
         var nextUrl: String? = null
@@ -83,7 +103,7 @@ class NetworkRepositoryImpl(
             }
 
             while (nextUrl != null) {
-                val response = api.getByUrl<PagedResponse<T>>(nextUrl)
+                val response = nextRequest(nextUrl)
                 if (response.isSuccessful) {
                     val body = response.body()
                     body?.results?.let { allResults.addAll(it) }

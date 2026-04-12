@@ -1,5 +1,6 @@
 package com.example.data.di
 
+import com.example.data.BuildConfig
 import com.example.data.data.network.StarWarsApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +14,7 @@ val networkModule = module {
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
-    single<Retrofit>(named("SW_API")) {
+    single<Retrofit>(named("sw_api")) {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(StarWarsApi.STAR_WARS_API_URL)
@@ -25,16 +26,15 @@ val networkModule = module {
         val httpClient = OkHttpClient.Builder()
         httpClient.build()
 
-        //TODO
-        /*if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG){
             OkHttpClient.Builder().addInterceptor((get<HttpLoggingInterceptor>())).build()
-        }*/
-        //else{
+        }
+        else{
             OkHttpClient.Builder().build()
-        //}
+        }
     }
 
     single<StarWarsApi> {
-        (get<Retrofit>(named("SW_API"))).create(StarWarsApi::class.java)
+        (get<Retrofit>(named("sw_api"))).create(StarWarsApi::class.java)
     }
 }

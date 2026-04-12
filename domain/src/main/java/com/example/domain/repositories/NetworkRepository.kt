@@ -4,6 +4,6 @@ import com.example.domain.utils.NetworkResponse
 
 interface NetworkRepository {
 
-    suspend fun getAllDataFromNetwork(): NetworkResponse<Boolean>
+    suspend fun fetchDataFromNetwork(): NetworkResponse<Boolean>
 
 }

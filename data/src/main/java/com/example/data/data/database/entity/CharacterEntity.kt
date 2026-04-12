@@ -8,8 +8,8 @@ import com.example.domain.models.Id
 data class CharacterEntity(
     @PrimaryKey val id: Id,
     val name: String,
-    val height: Int,
-    val mass: Int,
+    val height: String,
+    val mass: String,
     val hairColor: String,
     val skinColor: String,
     val eyeColor: String,
