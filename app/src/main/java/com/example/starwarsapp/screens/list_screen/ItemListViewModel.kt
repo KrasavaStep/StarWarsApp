@@ -33,6 +33,7 @@ class ItemListViewModel(
         loadData()
     }
 
+    //TODO rework for one use case
     private fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {
             _state.update { it.copy(isLoading = true, error = null) }

@@ -8,4 +8,6 @@ sealed class Screen(val route: String) {
     object Details : Screen("details/{details_tag}/{details_id}") {
         fun createRoute(tag: String, id: Int) = "details/$tag/$id"
     }
+
+    object Splash: Screen("splash")
 }

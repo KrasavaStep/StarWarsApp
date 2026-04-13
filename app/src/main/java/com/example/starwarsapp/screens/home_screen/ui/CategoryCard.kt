@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.domain.utils.CategoryName
 import com.example.starwarsapp.ui.theme.CardBackground
+import com.example.starwarsapp.ui.theme.LightYellow
 
 data class MenuItem(
     val title: CategoryName,
@@ -69,7 +70,7 @@ fun CategoryCard(item: MenuItem, onClick: () -> Unit) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
             contentDescription = null,
-            tint = Color(0xFF3A3A3C),
+            tint = LightYellow,
             modifier = Modifier.size(24.dp)
         )
     }

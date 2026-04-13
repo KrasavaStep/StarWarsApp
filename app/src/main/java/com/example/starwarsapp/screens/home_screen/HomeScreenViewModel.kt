@@ -18,7 +18,7 @@ class HomeScreenViewModel(
     private val fetchNetworkUseCase: FetchNetworkUseCase,
     private val addDataToPrefsUseCase: SaveToPrefsUseCase,
     private val getDataFromPrefsUseCase: GetFromPrefsUseCase
-): ViewModel() {
+) : ViewModel() {
 
     private val sharedPrefsKey = "isFirstTime"
 
@@ -36,12 +36,17 @@ class HomeScreenViewModel(
             is HomeScreenIntent.LoadAllData -> {
                 if (getDataFromPrefsUseCase(sharedPrefsKey)) {
                     _state.update { it.copy(isLoading = false, data = true) }
-                }
-                else {
+                } else {
                     fetchData()
                 }
             }
+
             is HomeScreenIntent.RefreshData -> fetchData()
+            is HomeScreenIntent.ClearError -> {
+                _state.update {
+                    it.copy(error = null)
+                }
+            }
         }
     }
 
@@ -50,18 +55,30 @@ class HomeScreenViewModel(
 
             _state.update { it.copy(isLoading = true, error = null) }
 
-            when (val response = fetchNetworkUseCase()) {
-                is NetworkResponse.Success -> {
-                    _state.update { it.copy(isLoading = false, data = response.data) }
-                    addDataToPrefsUseCase(sharedPrefsKey, true)
-                }
-                is NetworkResponse.Exception -> {
-                    Log.e("Response Error", response.e.message.toString())
-                    _state.update { it.copy(isLoading = false, error = response.e.message) }
-                }
-            }
+            try {
+                when (val response = fetchNetworkUseCase()) {
+                    is NetworkResponse.Success -> {
+                        _state.update { it.copy(isLoading = false, data = response.data) }
+                        addDataToPrefsUseCase(sharedPrefsKey, true)
+                    }
 
+                    is NetworkResponse.Exception -> {
+                        Log.e("Response Error", response.e.message.toString())
+                        _state.update { it.copy(isLoading = false, error = response.e.message) }
+                    }
+                }
+            } catch (e: Exception) {
+                val isNetworkError = e is java.net.UnknownHostException || e is java.io.IOException
+                _state.update {
+                    it.copy(
+                        isLoading = false,
+                        isOffline = isNetworkError,
+                        error = e.message
+                    )
+                }
+
+
+            }
         }
     }
-
 }

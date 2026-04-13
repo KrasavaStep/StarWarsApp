@@ -15,6 +15,7 @@ import com.example.starwarsapp.screens.home_screen.HomeScreenViewModel
 import com.example.starwarsapp.screens.home_screen.ui.HomeScreen
 import com.example.starwarsapp.screens.list_screen.ItemListViewModel
 import com.example.starwarsapp.screens.list_screen.ui.ListScreen
+import com.example.starwarsapp.screens.splash_screen.StarWarsSplashScreen
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
@@ -25,8 +26,16 @@ fun AppNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route
+        startDestination = Screen.Splash.route
     ) {
+        composable(Screen.Splash.route) {
+            StarWarsSplashScreen(onTimeout = {
+                navController.navigate(Screen.Home.route) {
+                    popUpTo(Screen.Splash.route) { inclusive = true }
+                }
+            })
+        }
+
         //Home screen
         composable(Screen.Home.route) {
             val viewModel: HomeScreenViewModel = koinViewModel(qualifier = named("home_vm"))

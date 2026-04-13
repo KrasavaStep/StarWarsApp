@@ -2,6 +2,7 @@ package com.example.starwarsapp.screens.details_screen.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -14,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.starwarsapp.ui.theme.LightYellow
 
 @Composable
 fun DetailsTitle(
@@ -24,12 +26,12 @@ fun DetailsTitle(
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = null,
-            tint = Color.White,
-            modifier = Modifier.size(32.dp).clickable { onBackClick() }
+            tint = LightYellow,
+            modifier = Modifier.size(32.dp).clickable { onBackClick() }.padding(horizontal = 6.dp)
         )
         Text(
             text = title,
-            color = Color.White,
+            color = LightYellow,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )

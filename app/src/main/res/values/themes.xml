@@ -2,4 +2,15 @@
 <resources>
 
     <style name="Theme.StarWarsApp" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- Фон окна (делаем черным под стиль Star Wars) -->
+        <item name="windowSplashScreenBackground">#000000</item>
+
+        <!-- Иконка в центре. Если хочешь убрать робота, поставь прозрачный drawable -->
+        <item name="windowSplashScreenAnimatedIcon">@android:color/transparent</item>
+
+        <item name="postSplashScreenTheme">@style/Theme.StarWarsApp</item>
+
+    </style>
 </resources>

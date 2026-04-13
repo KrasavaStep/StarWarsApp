@@ -41,11 +41,11 @@ import kotlinx.coroutines.delay
 @Composable
 fun DeathStarLoader() {
     val loadingPhrases = listOf(
-        "Прогреваем гипердвигатель...",
-        "Создаём звёзды...",
-        "Вносим личные дела...",
-        "Калибруем суперлазер...",
-        "Проверяем наличие дроидов..."
+        "Warming up the hyperdrive...",
+        "Creating stars...",
+        "File personal files...",
+        "Calibrating the superlaser...",
+        "Checking for droids..."
     )
 
     var currentPhraseIndex by remember { mutableIntStateOf(0) }
