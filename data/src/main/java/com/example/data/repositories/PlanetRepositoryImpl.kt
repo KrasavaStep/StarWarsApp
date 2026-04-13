@@ -1,7 +1,6 @@
 package com.example.data.repositories
 
 import com.example.data.data.database.StarWarsDao
-import com.example.data.data.database.mappers.mapToCharacter
 import com.example.data.data.database.mappers.mapToPlanet
 import com.example.domain.models.Id
 import com.example.domain.models.PlanetModel

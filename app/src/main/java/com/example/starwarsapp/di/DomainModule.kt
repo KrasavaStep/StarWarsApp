@@ -2,6 +2,7 @@ package com.example.starwarsapp.di
 
 import com.example.domain.usecase.FetchNetworkUseCase
 import com.example.domain.usecase.GetCharactersUseCase
+import com.example.domain.usecase.GetDetailsUseCase
 import com.example.domain.usecase.GetFilmsUseCase
 import com.example.domain.usecase.GetFromPrefsUseCase
 import com.example.domain.usecase.GetPlanetUseCase
@@ -25,5 +26,7 @@ val domainModule = module {
     factory { GetPlanetUseCase(get()) }
     factory { GetStarshipUseCase(get()) }
     factory { GetSpeciesUseCase(get()) }
+
+    factory { GetDetailsUseCase(get(), get(), get(), get(), get(), get()) }
 
 }

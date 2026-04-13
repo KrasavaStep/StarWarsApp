@@ -1,13 +1,16 @@
 package com.example.starwarsapp.screens.navigation
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.domain.utils.CategoryName
+import com.example.starwarsapp.screens.details_screen.DetailsViewModel
+import com.example.starwarsapp.screens.details_screen.ui.DetailsScreen
 import com.example.starwarsapp.screens.home_screen.HomeScreenViewModel
 import com.example.starwarsapp.screens.home_screen.ui.HomeScreen
 import com.example.starwarsapp.screens.list_screen.ItemListViewModel
@@ -33,25 +36,37 @@ fun AppNavigation() {
         }
 
         // List screen
-        composable(Screen.ItemList.route) { backStackEntry ->
+        composable(
+            route = Screen.ItemList.route
+        ) { backStackEntry ->
             val tag = backStackEntry.arguments?.getString("tag_category") ?: ""
-            Log.e("ROUTE", tag)
             val category = CategoryName.valueOf(tag.toUpperCase(Locale.current))
-            val viewModel: ItemListViewModel = koinViewModel(qualifier = named("list_vm")) { parametersOf(category) }
+            val viewModel: ItemListViewModel =
+                koinViewModel(qualifier = named("list_vm")) { parametersOf(category) }
             ListScreen(
                 viewModel = viewModel,
                 onBackClick = { navController.popBackStack() },
-                onItemClick = { detailsTag ->
-                    navController.navigate(Screen.Details.createRoute(detailsTag))
+                onItemClick = { detailsTag, id ->
+                    navController.navigate(Screen.Details.createRoute(detailsTag, id.id))
                 }
             )
         }
 
-        /*
+
         // Details screen
-        composable(Screen.Details.route) { backStackEntry ->
-            val personName = backStackEntry.arguments?.getString("personName") ?: ""
-            PersonDetailScreen(name = personName)
-        }*/
+        composable(
+            route = Screen.Details.route,
+            arguments = listOf(
+                navArgument("details_tag") { type = NavType.StringType },
+                navArgument("details_id") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val tag = backStackEntry.arguments?.getString("details_tag") ?: ""
+            val category = CategoryName.valueOf(tag.toUpperCase(Locale.current))
+            val id = backStackEntry.arguments?.getInt("details_id") ?: 0
+            val viewModel: DetailsViewModel =
+                koinViewModel(qualifier = named("details_vm")) { parametersOf(category, id) }
+            DetailsScreen(viewModel) { navController.popBackStack() }
+        }
     }
 }

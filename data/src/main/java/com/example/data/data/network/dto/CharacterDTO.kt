@@ -1,6 +1,5 @@
 package com.example.data.data.network.dto
 
-import com.example.domain.models.CharacterModel
 import com.google.gson.annotations.SerializedName
 
 data class CharacterDTO(

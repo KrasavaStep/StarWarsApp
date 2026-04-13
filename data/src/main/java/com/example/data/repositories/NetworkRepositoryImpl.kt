@@ -1,6 +1,5 @@
 package com.example.data.repositories
 
-import android.util.Log
 import com.example.data.data.database.StarWarsDao
 import com.example.data.data.database.mappers.mapToCharacterEntity
 import com.example.data.data.database.mappers.mapToFilmEntity

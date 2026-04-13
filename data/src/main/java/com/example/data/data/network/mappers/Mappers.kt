@@ -1,6 +1,5 @@
 package com.example.data.data.network.mappers
 
-import android.util.Log
 import com.example.data.data.network.dto.CharacterDTO
 import com.example.data.data.network.dto.FilmDTO
 import com.example.data.data.network.dto.PlanetDTO
@@ -14,7 +13,6 @@ import com.example.domain.models.PlanetModel
 import com.example.domain.models.SpeciesModel
 import com.example.domain.models.StarShipModel
 import com.example.domain.models.VehicleModel
-import kotlin.collections.map
 
 fun CharacterDTO.mapToCharacters() = CharacterModel(
     id = convertToID(this.url),

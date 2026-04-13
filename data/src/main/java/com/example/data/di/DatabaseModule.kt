@@ -5,7 +5,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.data.data.database.StarWarsDao
 import com.example.data.data.database.StarWarsDatabase
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 fun provideDatabase(application: Application): StarWarsDatabase {

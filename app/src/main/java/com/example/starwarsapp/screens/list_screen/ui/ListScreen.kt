@@ -18,48 +18,56 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.domain.models.Id
+import com.example.starwarsapp.screens.home_screen.ui.DeathStarLoader
 import com.example.starwarsapp.screens.list_screen.ItemListViewModel
 
 @Composable
 fun ListScreen(
     viewModel: ItemListViewModel,
     onBackClick: () -> Unit,
-    onItemClick: (tag: String) -> Unit
+    onItemClick: (tag: String, id: Id) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    var searchQuery by remember { mutableStateOf("") }
 
-    val filteredContent = state.data?.filter {
-        it.title.contains(searchQuery, ignoreCase = true)
-    } ?: emptyList()
+    if (state.isLoading) {
+        DeathStarLoader()
+    }else {
+        var searchQuery by remember { mutableStateOf("") }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black)
-    ) {
+        val filteredContent = state.data?.filter {
+            it.title.contains(searchQuery, ignoreCase = true)
+        } ?: emptyList()
 
-        ListScreenTitle(state.title.toString()) {
-            onBackClick()
-        }
-
-        SearchBar(searchQuery) {
-            searchQuery = it
-        }
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
         ) {
-            items(filteredContent) { it ->
-                ListItem(title = it.title, additional = it.additionalInfo)
-                {
-                /*on item*/
+
+            ListScreenTitle(state.title.toString()) {
+                onBackClick()
+            }
+
+            SearchBar(searchQuery) {
+                searchQuery = it
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(filteredContent) {
+                    ListItem(title = it.title, additional = it.additionalInfo)
+                    {
+                        onItemClick(state.title ?: "", it.id)
+                    }
                 }
             }
         }
     }
+
 }

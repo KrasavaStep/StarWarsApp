@@ -2,8 +2,8 @@ package com.example.data.repositories
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.domain.repositories.SharedPrefsRepository
 import androidx.core.content.edit
+import com.example.domain.repositories.SharedPrefsRepository
 
 class SharedPrefsRepositoryImpl(context: Context): SharedPrefsRepository {
 
