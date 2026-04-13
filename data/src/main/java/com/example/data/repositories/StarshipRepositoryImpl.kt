@@ -1,15 +1,20 @@
 package com.example.data.repositories
 
+import com.example.data.data.database.StarWarsDao
+import com.example.data.data.database.mappers.mapToCharacter
+import com.example.data.data.database.mappers.mapToStarship
 import com.example.domain.models.Id
 import com.example.domain.models.StarShipModel
 import com.example.domain.repositories.StarshipRepository
 
-class StarshipRepositoryImpl: StarshipRepository {
+class StarshipRepositoryImpl(
+    private val dao: StarWarsDao
+): StarshipRepository {
     override suspend fun getStarships(): List<StarShipModel> {
-        TODO("Not yet implemented")
+        return dao.getStarships().map { it.mapToStarship() }
     }
 
     override suspend fun getStarshipById(ids: List<Id>): List<StarShipModel> {
-        TODO("Not yet implemented")
+        return dao.getStarshipsById(ids).map { it.mapToStarship() }
     }
 }
