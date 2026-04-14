@@ -32,11 +32,11 @@ fun ListScreen(
 
     if (state.isLoading) {
         DeathStarLoader()
-    }else {
+    } else {
         var searchQuery by remember { mutableStateOf("") }
 
         val filteredContent = state.data?.filter {
-            it.title.contains(searchQuery, ignoreCase = true)
+            it.name.contains(searchQuery, ignoreCase = true)
         } ?: emptyList()
 
         Column(
@@ -61,7 +61,7 @@ fun ListScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(filteredContent) {
-                    ListItem(title = it.title, additional = it.additionalInfo)
+                    ListItem(title = it.name, additional = it.info)
                     {
                         onItemClick(state.title ?: "", it.id)
                     }

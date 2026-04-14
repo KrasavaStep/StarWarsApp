@@ -1,16 +1,5 @@
 package com.example.domain.utils
 
-data class DetailModel(
-    val name: String,
-    val info: Map<Key, String>,
-    val extraLists: List<ExtraSection>
-)
-
-data class ExtraSection(
-    val title: String,
-    val items: List<String>
-)
-
 sealed interface Key
 
 enum class People : Key {
@@ -36,6 +25,3 @@ enum class StarShip : Key {
 enum class Vehicle : Key {
     NAME, MODEL, MANUFACTURER, COST, LENGTH, MAX_SPEED, CREW, PASSENGERS, CAPACITY, CONSUMABLES, CLASS
 }
-
-
-

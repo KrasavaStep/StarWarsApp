@@ -21,12 +21,8 @@ val appModule = module {
     viewModel(named("list_vm")) { (tag: CategoryName) ->
         ItemListViewModel(
             tag,
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get())
+            get()
+        )
     }
 
     viewModel(named("details_vm")) { (tag: CategoryName, id: Int) ->

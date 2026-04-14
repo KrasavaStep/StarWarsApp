@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
@@ -23,13 +22,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.domain.utils.Key
 import com.example.starwarsapp.ui.theme.CardBackground
 import com.example.starwarsapp.ui.theme.LightYellow
+import com.example.starwarsapp.util.getNameForEnum
 
 @Composable
 fun ListItem(
     title: String,
-    additional: String,
+    additional: Map<Key, String>,
     onClick: () -> Unit
 ) {
     Row(
@@ -55,9 +56,9 @@ fun ListItem(
             )
             Spacer(modifier = Modifier.padding(6.dp))
             Text(
-                text = additional,
+                text = convertFromMapToAdditional(additional),
                 color = Color.White,
-                fontSize = 18.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold
             )
         }
@@ -70,4 +71,8 @@ fun ListItem(
                 .weight(0.5f)
         )
     }
+}
+
+private fun convertFromMapToAdditional(info: Map<Key, String>): String {
+    return info.map { (k, v) -> "${getNameForEnum(k)}: $v. " }.joinToString()
 }
