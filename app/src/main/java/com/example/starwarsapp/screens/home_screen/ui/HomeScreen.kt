@@ -1,6 +1,6 @@
 package com.example.starwarsapp.screens.home_screen.ui
 
-import android.util.Log
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -21,20 +21,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.starwarsapp.R
 import com.example.starwarsapp.screens.home_screen.HomeScreenIntent
 import com.example.starwarsapp.screens.home_screen.HomeScreenViewModel
 import com.example.starwarsapp.ui.theme.CardBackground
 import com.example.starwarsapp.ui.theme.LightYellow
-import com.example.starwarsapp.ui.theme.TextGray
 
 
 @Composable
@@ -44,12 +45,13 @@ fun HomeScreen(
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     LaunchedEffect(state.isOffline) {
         if (state.isOffline) {
             val result = snackbarHostState.showSnackbar(
-                message = "Connection lost",
-                actionLabel = "Retry",
+                message = context.getString(R.string.no_internet_connection),
+                actionLabel = context.getString(R.string.try_again_label),
                 duration = SnackbarDuration.Indefinite
             )
 
@@ -65,8 +67,8 @@ fun HomeScreen(
     LaunchedEffect(state.error) {
         if (state.error != null) {
             val result = snackbarHostState.showSnackbar(
-                message = "Something went wrong",
-                actionLabel = "Retry",
+                message = context.getString(R.string.smth_went_wrong_label),
+                actionLabel = context.getString(R.string.try_again_label),
                 duration = SnackbarDuration.Long
             )
 
@@ -123,7 +125,7 @@ fun HomeScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Load Star Wars data",
+                            text = stringResource(R.string.loader_btn_text),
                             color = Color.Black,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.ExtraBold,

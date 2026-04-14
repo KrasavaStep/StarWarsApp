@@ -1,6 +1,5 @@
 package com.example.starwarsapp.screens.details_screen.ui
 
-import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,18 +26,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.starwarsapp.R
 import com.example.domain.utils.DetailModel
 import com.example.domain.utils.Film
-import com.example.domain.utils.Key
 import com.example.domain.utils.StarShip
 import com.example.domain.utils.Vehicle
 import com.example.starwarsapp.ui.theme.CardBackground
 import com.example.starwarsapp.ui.theme.LightYellow
-import com.example.starwarsapp.util.getNameForEnum
+import com.example.starwarsapp.util.getStringForEnum
 
 @Composable
 fun GeneralDataCard(
@@ -68,7 +68,7 @@ fun GeneralDataCard(
             }
             Spacer(modifier = Modifier.width(12.dp))
             Text(
-                "General Data",
+                stringResource(R.string.general_data_label),
                 color = Color.White,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
@@ -80,10 +80,10 @@ fun GeneralDataCard(
         data?.info?.forEach { (k, v) ->
             when (k) {
                 Film.CRAWL, StarShip.MANUFACTURER, Vehicle.MANUFACTURER -> {
-                    DataColumn("${getNameForEnum(k)}: ", v)
+                    DataColumn("${getStringForEnum(k)}: ", v)
                 }
                 else -> {
-                    DataRow("${getNameForEnum(k)}: ", v)
+                    DataRow("${getStringForEnum(k)}: ", v)
                 }
             }
         }

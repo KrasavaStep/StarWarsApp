@@ -18,18 +18,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.starwarsapp.R
 import com.example.starwarsapp.ui.theme.LightYellow
 import kotlinx.coroutines.delay
 
 @Composable
 fun StarWarsSplashScreen(onTimeout: () -> Unit) {
-    // Состояния для анимации
     var startAnimation by remember { mutableStateOf(false) }
 
     val scale by animateFloatAsState(
-        targetValue = if (startAnimation) 0f else 4f, // Уменьшается, как в титрах
+        targetValue = if (startAnimation) 0f else 4f,
         animationSpec = tween(durationMillis = 3000, easing = LinearOutSlowInEasing),
         label = "scale"
     )
@@ -40,7 +41,6 @@ fun StarWarsSplashScreen(onTimeout: () -> Unit) {
         label = "alpha"
     )
 
-    // Таймер перехода
     LaunchedEffect(Unit) {
         startAnimation = true
         delay(3200) // Ждем завершения анимации
@@ -65,21 +65,21 @@ fun StarWarsSplashScreen(onTimeout: () -> Unit) {
                 )
         ) {
             Text(
-                text = "STAR",
+                text = stringResource(R.string.splash_header_1),
                 color = LightYellow,
                 fontSize = 80.sp,
                 fontWeight = FontWeight.ExtraBold,
                 letterSpacing = 8.sp
             )
             Text(
-                text = "WARS",
+                text = stringResource(R.string.splash_header_2),
                 color = LightYellow,
                 fontSize = 80.sp,
                 fontWeight = FontWeight.ExtraBold,
                 letterSpacing = 8.sp
             )
             Text(
-                text = "GALAXY EXPLORER",
+                text = stringResource(R.string.splash_subheader),
                 color = Color.White,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Light,

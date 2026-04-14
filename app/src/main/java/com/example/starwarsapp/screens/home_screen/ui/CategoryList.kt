@@ -10,16 +10,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.domain.utils.CategoryName
+import com.example.starwarsapp.ui.theme.Color1
+import com.example.starwarsapp.ui.theme.Color2
+import com.example.starwarsapp.ui.theme.Color3
+import com.example.starwarsapp.ui.theme.Color4
+import com.example.starwarsapp.ui.theme.Color5
+import com.example.starwarsapp.ui.theme.Color6
 
 @Composable
 fun CategoryList(onCategoryClick: (tag: String) -> Unit) {
     val items = listOf(
-        MenuItem(CategoryName.PEOPLE, null, null, Color(0xFF2D5AF6)),
-        MenuItem(CategoryName.PLANETS, null, null, Color(0xFF00AD45)),
-        MenuItem(CategoryName.STARSHIPS, null, null, Color(0xFF9520FF)),
-        MenuItem(CategoryName.VEHICLES, null, null, Color(0xFFFF5215)),
-        MenuItem(CategoryName.SPECIES, null, null, Color(0xFFFF001E)),
-        MenuItem(CategoryName.FILMS, null, null, Color(0xFFF35A69))
+        MenuItem(CategoryName.PEOPLE, null, null, Color1),
+        MenuItem(CategoryName.PLANETS, null, null, Color2),
+        MenuItem(CategoryName.STARSHIPS, null, null, Color3),
+        MenuItem(CategoryName.VEHICLES, null, null, Color4),
+        MenuItem(CategoryName.SPECIES, null, null, Color5),
+        MenuItem(CategoryName.FILMS, null, null, Color6)
     )
 
     Column(

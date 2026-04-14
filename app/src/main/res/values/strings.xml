@@ -1,3 +1,79 @@
 <resources>
     <string name="app_name">StarWarsApp</string>
+
+    <!-- Film Details -->
+    <string name="film_title">"Title"</string>
+    <string name="label_episode_number">Episode number</string>
+    <string name="label_opening_crawl">Opening crawl</string>
+    <string name="label_director">Director</string>
+    <string name="label_producer">Producer</string>
+    <string name="label_release_date">Release date</string>
+
+    <!-- General / Character Details -->
+    <string name="label_name">Name</string>
+    <string name="label_height_cm">Height, cm</string>
+    <string name="label_mass_kg">Mass, kg</string>
+    <string name="label_hair_color">Hair color</string>
+    <string name="label_skin_color">Skin color</string>
+    <string name="label_eyes_color">Eyes color</string>
+    <string name="label_birth_date">Birth date</string>
+    <string name="label_gender">Gender</string>
+    <string name="label_home_world">Home world</string>
+
+    <!-- Planet Details -->
+    <string name="label_rotation_period">Rotation period</string>
+    <string name="label_orbital_period">Orbital period</string>
+    <string name="label_diameter">Diameter</string>
+    <string name="label_climate">Climate</string>
+    <string name="label_gravity">Gravity</string>
+    <string name="label_terrain">Terrain</string>
+    <string name="label_water">Water</string>
+    <string name="label_population">Population</string>
+
+    <!-- Species Details -->
+    <string name="label_classification">Classification</string>
+    <string name="label_designation">Designation</string>
+    <string name="label_average_height_cm">Average height, cm</string>
+    <string name="label_average_lifespan_y">Average lifespan, y</string>
+    <string name="label_language">Language</string>
+
+    <!-- Vehicle / Starship Details -->
+    <string name="label_model">Model</string>
+    <string name="label_manufacturer">Manufacturer</string>
+    <string name="label_cost">Cost</string>
+    <string name="label_length">Length</string>
+    <string name="label_max_speed">Max. speed</string>
+    <string name="label_crew">Crew</string>
+    <string name="label_passengers">Passengers</string>
+    <string name="label_capacity">Capacity</string>
+    <string name="label_consumables">Consumables</string>
+    <string name="label_hyperdrive_rating">Hyperdrive rating</string>
+    <string name="label_mglt">MGLT</string>
+    <string name="label_starship_class">Starship class</string>
+    <string name="label_vehicle_class">Vehicle class</string>
+
+    <!-- Splachscreen data -->
+    <string name="splash_header_1">STAR</string>
+    <string name="splash_header_2">WARS</string>
+    <string name="splash_subheader">GALAXY EXPLORER</string>
+
+    <!-- Loader strings -->
+    <string name="loader_label_1">Warming up the hyperdrive...</string>
+    <string name="loader_label_2">Creating stars...</string>
+    <string name="loader_label_3">File personal files...</string>
+    <string name="loader_label_4">Calibrating the superlaser...</string>
+    <string name="loader_label_5">Checking for droids...</string>
+    <string name="loader_btn_text">Load Star Wars data</string>
+
+    <!-- Error strings -->
+    <string name="smth_went_wrong_label">Something went wrong</string>
+    <string name="no_internet_connection">Connection lost</string>
+    <string name="try_again_label">Retry</string>
+
+    <!-- Additional -->
+    <string name="search_bar_title">Search data...</string>
+    <string name="no_info_label">No information</string>
+    <string name="general_data_label">General data</string>
+
+
 </resources>

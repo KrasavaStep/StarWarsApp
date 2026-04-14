@@ -17,9 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.starwarsapp.R
 import com.example.starwarsapp.ui.theme.LightYellow
 
 @Composable
@@ -38,7 +40,7 @@ fun ErrorView(
             color = LightYellow,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            text = "Something went wrong",
+            text = stringResource(R.string.smth_went_wrong_label),
             modifier = Modifier.padding(vertical = 8.dp)
         )
 
@@ -60,7 +62,7 @@ fun TryAgainButton(onClick: () -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "TRY AGAIN",
+            text = stringResource(R.string.try_again_label),
             color = Color.Black,
             fontSize = 18.sp,
             fontWeight = FontWeight.ExtraBold,

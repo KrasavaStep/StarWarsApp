@@ -13,7 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.starwarsapp.R
+import com.example.starwarsapp.ui.theme.SearchbarBackground
 
 @Composable
 fun SearchBar(
@@ -27,7 +30,7 @@ fun SearchBar(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .clip(RoundedCornerShape(12.dp)),
-        placeholder = { Text("Search characters...", color = Color.Gray) },
+        placeholder = { Text(stringResource(R.string.search_bar_title), color = Color.Gray) },
         leadingIcon = {
             Icon(
                 Icons.Default.Search,
@@ -36,8 +39,8 @@ fun SearchBar(
             )
         },
         colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color(0xFF1C1C1E),
-            unfocusedContainerColor = Color(0xFF1C1C1E),
+            focusedContainerColor = SearchbarBackground,
+            unfocusedContainerColor = SearchbarBackground,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             focusedTextColor = Color.White,

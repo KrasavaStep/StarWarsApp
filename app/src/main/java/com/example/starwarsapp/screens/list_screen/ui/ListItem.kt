@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.domain.utils.Key
 import com.example.starwarsapp.ui.theme.CardBackground
 import com.example.starwarsapp.ui.theme.LightYellow
-import com.example.starwarsapp.util.getNameForEnum
+import com.example.starwarsapp.util.getStringForEnum
 
 @Composable
 fun ListItem(
@@ -73,6 +73,7 @@ fun ListItem(
     }
 }
 
+@Composable
 private fun convertFromMapToAdditional(info: Map<Key, String>): String {
-    return info.map { (k, v) -> "${getNameForEnum(k)}: $v. " }.joinToString()
+    return info.map { (k, v) -> "${getStringForEnum(k)}: $v. " }.joinToString()
 }

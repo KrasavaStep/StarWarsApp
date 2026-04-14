@@ -18,7 +18,7 @@ import com.example.starwarsapp.ui.theme.LightYellow
 @Composable
 fun SectionHeader(title: String) {
     Text(
-        text = "Residents",
+        text = title,
         color = LightYellow,
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold,

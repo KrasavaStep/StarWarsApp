@@ -14,3 +14,13 @@ val LightYellow = Color(0xFFFDE047)
 val TextGray = Color(0xFF545454)
 
 val CardBackground = Color(0xFF2F2F33)
+
+val SearchbarBackground = Color(0xFF1C1C1E)
+
+//Random colors for section list
+val Color1 = Color(0xFF2D5AF6)
+val Color2 = Color(0xFF00AD45)
+val Color3 = Color(0xFF9520FF)
+val Color4 = Color(0xFFFF5215)
+val Color5 = Color(0xFFFF001E)
+val Color6 = Color(0xFFF35A69)
