@@ -13,9 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.starwarsapp.R
 import com.example.starwarsapp.screens.details_screen.DetailsViewModel
 import com.example.starwarsapp.screens.home_screen.ui.DeathStarLoader
-import com.example.starwarsapp.R
 
 @Composable
 fun DetailsScreen(

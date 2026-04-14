@@ -31,11 +31,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.starwarsapp.R
 import com.example.domain.utils.DetailModel
 import com.example.domain.utils.Film
 import com.example.domain.utils.StarShip
 import com.example.domain.utils.Vehicle
+import com.example.starwarsapp.R
 import com.example.starwarsapp.ui.theme.CardBackground
 import com.example.starwarsapp.ui.theme.LightYellow
 import com.example.starwarsapp.util.getStringForEnum
