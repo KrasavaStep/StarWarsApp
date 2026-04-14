@@ -8,6 +8,7 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+/**Koin module for view models**/
 val appModule = module {
 
     viewModel(named("home_vm")) {

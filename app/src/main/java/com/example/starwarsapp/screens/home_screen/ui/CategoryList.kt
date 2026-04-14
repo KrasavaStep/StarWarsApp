@@ -20,6 +20,9 @@ import com.example.starwarsapp.ui.theme.Color4
 import com.example.starwarsapp.ui.theme.Color5
 import com.example.starwarsapp.ui.theme.Color6
 
+/**
+ * UI for category List (main menu)
+ * **/
 @Composable
 fun CategoryList(onCategoryClick: (tag: String) -> Unit) {
     val items = listOf(

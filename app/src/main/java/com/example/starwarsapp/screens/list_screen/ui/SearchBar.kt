@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import com.example.starwarsapp.R
 import com.example.starwarsapp.ui.theme.SearchbarBackground
 
+
+/**UI for search bar**/
 @Composable
 fun SearchBar(
     searchQuery: String,

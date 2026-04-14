@@ -7,6 +7,7 @@ import com.example.domain.usecase.GetListDataUseCase
 import com.example.domain.usecase.SaveToPrefsUseCase
 import org.koin.dsl.module
 
+/**Koin module for use cases**/
 val domainModule = module {
 
     factory { FetchNetworkUseCase(get()) }

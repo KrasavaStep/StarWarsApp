@@ -46,6 +46,10 @@ fun HomeScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
+    /**
+     * Check for offline exception
+     * **/
+
     LaunchedEffect(state.isOffline) {
         if (state.isOffline) {
             val result = snackbarHostState.showSnackbar(
@@ -62,6 +66,10 @@ fun HomeScreen(
             snackbarHostState.currentSnackbarData?.dismiss()
         }
     }
+
+    /**
+     * Check for other exceptions
+     * **/
 
     LaunchedEffect(state.error) {
         if (state.error != null) {

@@ -23,6 +23,9 @@ class DetailsViewModel(
         loadData()
     }
 
+    /**
+     * Load data from database via use case
+     **/
     private fun loadData() {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true, error = null) }

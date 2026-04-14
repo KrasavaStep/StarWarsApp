@@ -27,6 +27,9 @@ import com.example.starwarsapp.ui.theme.CardBackground
 import com.example.starwarsapp.ui.theme.LightYellow
 import com.example.starwarsapp.util.getStringForEnum
 
+/**
+ * UI for list item
+ * **/
 @Composable
 fun ListItem(
     title: String,

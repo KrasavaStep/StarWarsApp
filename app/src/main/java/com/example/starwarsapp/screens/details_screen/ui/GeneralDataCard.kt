@@ -40,6 +40,10 @@ import com.example.starwarsapp.ui.theme.CardBackground
 import com.example.starwarsapp.ui.theme.LightYellow
 import com.example.starwarsapp.util.getStringForEnum
 
+
+/**
+ * This is UI for Details General information
+ * **/
 @Composable
 fun GeneralDataCard(
     data: DetailModel?

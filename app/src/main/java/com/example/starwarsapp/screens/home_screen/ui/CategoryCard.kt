@@ -33,6 +33,10 @@ data class MenuItem(
     val iconBackgroundColor: Color
 )
 
+/**
+ * This is UI for Category card
+ * **/
+
 @Composable
 fun CategoryCard(item: MenuItem, onClick: () -> Unit) {
     Row(

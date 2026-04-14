@@ -23,6 +23,9 @@ import androidx.compose.ui.unit.sp
 import com.example.starwarsapp.ui.theme.LightYellow
 import com.example.starwarsapp.ui.theme.TextGray
 
+/**
+ * UI for home screen top bar
+ * **/
 @Composable
 fun HomeTitle(
     onUpdateClick: () -> Unit

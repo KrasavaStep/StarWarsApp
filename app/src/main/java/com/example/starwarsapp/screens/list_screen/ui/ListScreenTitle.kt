@@ -19,6 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.starwarsapp.ui.theme.LightYellow
 
+/**
+ * UI for list screen top bar
+ * **/
 @Composable
 fun ListScreenTitle(
     title: String,

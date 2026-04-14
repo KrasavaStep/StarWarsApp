@@ -9,6 +9,7 @@ import com.example.starwarsapp.di.domainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
+/**The enter point of Koin**/
 class App : Application() {
     override fun onCreate() {
         super.onCreate()

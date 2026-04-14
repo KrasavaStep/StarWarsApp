@@ -25,6 +25,9 @@ class HomeScreenViewModel(
     private val _state = MutableStateFlow(HomeState())
     val state: StateFlow<HomeState> = _state.asStateFlow()
 
+    /**
+     * start check if user launch not for first time
+     * **/
     init {
         if (getDataFromPrefsUseCase(sharedPrefsKey)) {
             _state.update { it.copy(isLoading = false, data = true) }
@@ -50,6 +53,9 @@ class HomeScreenViewModel(
         }
     }
 
+    /**
+     * Fetch all data from the API
+     * **/
     fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
 

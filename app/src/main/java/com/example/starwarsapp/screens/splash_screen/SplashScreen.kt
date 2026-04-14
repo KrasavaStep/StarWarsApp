@@ -43,7 +43,7 @@ fun StarWarsSplashScreen(onTimeout: () -> Unit) {
 
     LaunchedEffect(Unit) {
         startAnimation = true
-        delay(3200) // Ждем завершения анимации
+        delay(3200)
         onTimeout()
     }
 

@@ -38,6 +38,10 @@ import com.example.starwarsapp.R
 import com.example.starwarsapp.ui.theme.TextGray
 import kotlinx.coroutines.delay
 
+
+/**
+ * The loader like death star with fade in text
+ * **/
 @Preview
 @Composable
 fun DeathStarLoader() {
@@ -51,7 +55,6 @@ fun DeathStarLoader() {
 
     var currentPhraseIndex by remember { mutableIntStateOf(0) }
 
-    // Вращение иконки
     val infiniteTransition = rememberInfiniteTransition(label = "rotation")
     val angle by infiniteTransition.animateFloat(
         initialValue = 0f,
