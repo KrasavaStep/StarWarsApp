@@ -29,7 +29,6 @@ import com.example.starwarsapp.ui.theme.LightYellow
 
 data class MenuItem(
     val title: CategoryName,
-    val iconRes: Int?,
     val iconVector: ImageVector? = null,
     val iconBackgroundColor: Color
 )
